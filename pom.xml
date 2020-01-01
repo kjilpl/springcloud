@@ -77,14 +77,14 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.mybatis.generator</groupId>
-                <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <configuration>
-                    <overwrite>true</overwrite>
-                    <configurationFile>src/main/resources/generator/generatorConfig.xml</configurationFile>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.mybatis.generator</groupId>-->
+<!--                <artifactId>mybatis-generator-maven-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    <overwrite>true</overwrite>-->
+<!--                    <configurationFile>src/main/resources/generator/generatorConfig.xml</configurationFile>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
 
         </plugins>
     </build>
