@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lpl.springcloud.dao.DeptMapper" >
+  <resultMap id="BaseResultMap" type="com.lpl.springcloud.model.Dept" >
+    <id column="deptno" property="deptno" jdbcType="BIGINT" />
+    <result column="dname" property="dname" jdbcType="VARCHAR" />
+    <result column="db_source" property="dbSource" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    deptno, dname, db_source
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from dept
+    where deptno = #{deptno,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dept
+    where deptno = #{deptno,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.lpl.springcloud.model.Dept" >
+    insert into dept (deptno, dname, db_source
+      )
+    values (#{deptno,jdbcType=BIGINT}, #{dname,jdbcType=VARCHAR}, #{dbSource,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lpl.springcloud.model.Dept" >
+    insert into dept
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="deptno != null" >
+        deptno,
+      </if>
+      <if test="dname != null" >
+        dname,
+      </if>
+      <if test="dbSource != null" >
+        db_source,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="deptno != null" >
+        #{deptno,jdbcType=BIGINT},
+      </if>
+      <if test="dname != null" >
+        #{dname,jdbcType=VARCHAR},
+      </if>
+      <if test="dbSource != null" >
+        #{dbSource,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lpl.springcloud.model.Dept" >
+    update dept
+    <set >
+      <if test="dname != null" >
+        dname = #{dname,jdbcType=VARCHAR},
+      </if>
+      <if test="dbSource != null" >
+        db_source = #{dbSource,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where deptno = #{deptno,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lpl.springcloud.model.Dept" >
+    update dept
+    set dname = #{dname,jdbcType=VARCHAR},
+      db_source = #{dbSource,jdbcType=VARCHAR}
+    where deptno = #{deptno,jdbcType=BIGINT}
+  </update>
+</mapper>
